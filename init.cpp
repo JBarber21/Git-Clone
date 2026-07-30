@@ -1,7 +1,7 @@
 #include <iostream>
 #include <filesystem>
 #include <fstream>
-#include "init.hpp"
+#include "headers.hpp"
 using namespace std;
 
 int init(char* argv){
