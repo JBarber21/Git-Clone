@@ -11,7 +11,21 @@ int main(int argc, char* argv[]){
     
     std::string arg = argv[1];
 
-    if(arg == "init") {init(argv[2]);}
+    if(arg == "init") {
+        if(argc < 3){
+            cout << "init requires a directory name";
+            return 1; 
+        }
+        init(argv[2]);
+    }
+
+    else if(arg == "hash-object"){
+        if(argc < 3){
+            cout << "hash-object requires an argument and/or file";
+            return 1; 
+        }
+        hashobject(argc, argv);
+    }
 
     else{std::cout << "Not a valid command";}
 

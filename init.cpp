@@ -4,13 +4,9 @@
 #include "headers.hpp"
 using namespace std;
 
-int init(char* argv){
-     if(argv == NULL){
-            std::cout << "Cannot Create NULL Directory";
-        return 0; 
-        }
+int init(char* dirname){
         
-        std::string dir = argv;
+        std::string dir = dirname;
 
         if(std::filesystem::exists(dir) == true){
             std::cout << "Directory Already Exists";

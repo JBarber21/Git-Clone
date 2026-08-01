@@ -21,13 +21,13 @@ int type(char* object_type){
 int hashobject(int argc, char* argv[]){
     
     
-    for(int i = 1; i < argc; i++){
+    for(int i = 2; i < argc; i++){
 
         std::string arg = argv[i];
 
         if(arg =="-w"){
             if(i+1 >= argc){
-                std::cout << "missing argument for -w\n";
+                std::cout << "missing argument for -w";
                 return 1; 
             }
             write(argv[i+1]);
@@ -35,17 +35,17 @@ int hashobject(int argc, char* argv[]){
         }
         else if(arg =="-t"){
             if(i+1 >= argc){
-                std::cout << "missing argument for -t\n";
+                std::cout << "missing argument for -t";
                 return 1; 
             }            
             type(argv[i+1]);
             i++;
         }
-        else if (std::filesystem::is_regular_file(argv[i]) || std::filesystem::is_directory(argv[i])){
+        else if (std::filesystem::is_regular_file(argv[i])){
             hash_object(argv[i]);
         }
         else{
-            std::cout << arg << "is not a valid argument";
+            std::cout << arg << " is not a valid argument";
             return 1; 
         }
     }
