@@ -20,8 +20,14 @@ std::optional<std::filesystem::path> find_object(const std::string& search){
     return file_path; 
 }
 
-int decompress_object(ifstream compressed_object){
+int decompress_object(std::filesystem::path object_path){
+    //Read object
 
+    
+    //Create/fill input buffer
+
+
+    //Inflate buffer with zlib
 }
 
 int pretty_print(char* content){
@@ -34,10 +40,13 @@ int cat_file(char* file[]){
         std::string hash = file[3]; 
 
         //search for object
-        find_object(hash);         
-
+        std::optional<std::filesystem::path> object_path = find_object(hash);         
+        if(!object_path.has_value()){
+            std::cout << "Unable to find object.";
+            return 1; 
+        }
         //decompress bytes
-
+        decompress_object(*object_path);
 
         //decipher object
 
